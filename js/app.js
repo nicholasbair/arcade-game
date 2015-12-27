@@ -1,3 +1,27 @@
+// TODO:
+// Change README to instructions for game play
+// Enemy function
+    // set enemy initial location
+    // set enemy initial speed
+// enemy.update
+    // updates enemy location
+    // handles collision with player
+// Player function
+    // loading image
+    // set player initial location
+// player.update
+    // similar to enemy.update
+// player.render
+    // use code from enemy.render
+// handleInput
+    // left key should move player left etc.
+    // player cannot move off the screen (check for this and handle)
+    // reset game when player reaches water
+        // move player back to original location
+// Instantiate
+    // create new Player object
+    // create several new Enemies objects and place them in array allEnemies
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -24,7 +48,9 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
+var Player = function() {
+    this.sprite = 'images/char-boy.png';
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
