@@ -7,19 +7,19 @@
     // updates enemy location
     // handles collision with player
 // Player function
-    // loading image
+    // loading image **DONE
     // set player initial location
 // player.update
-    // similar to enemy.update
+    // similar to enemy.update **DONE
 // player.render
-    // use code from enemy.render
+    // use code from enemy.render **DONE
 // handleInput
     // left key should move player left etc.
     // player cannot move off the screen (check for this and handle)
     // reset game when player reaches water
         // move player back to original location
 // Instantiate
-    // create new Player object
+    // create new Player object **DONE
     // create several new Enemies objects and place them in array allEnemies
 
 // Enemies our player must avoid
@@ -49,13 +49,28 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
+
+
     this.sprite = 'images/char-boy.png';
+};
+
+// Update the player's position, required method for game
+// Parameter: dt, a time delta between ticks
+Player.prototype.update = function(dt) {
+    // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+};
+
+// Draw the player on the screen, required method for game
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
