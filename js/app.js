@@ -20,7 +20,7 @@
         // move player back to original location
 // Instantiate
     // create new Player object **DONE
-    // create several new Enemies objects and place them in array allEnemies
+    // create several new Enemies objects and place them in array allEnemies **DONE
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -67,10 +67,15 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function() {
+
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player();
+var allEnemies = [new Enemy(x1, y1), new Enemy(x2, y2), new Enemy(x3, y3)];
 
 
 // This listens for key presses and sends the keys to your
