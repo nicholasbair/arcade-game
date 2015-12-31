@@ -1,14 +1,14 @@
 // TODO:
 // Change README to instructions for game play
 // Enemy function
-    // set enemy initial location
+    // set enemy initial location **DONE
     // set enemy initial speed
 // enemy.update
     // updates enemy location
     // handles collision with player
 // Player function
     // loading image **DONE
-    // set player initial location
+    // set player initial location **DONE
 // player.update
     // similar to enemy.update **DONE
 // player.render
@@ -23,13 +23,15 @@
     // create several new Enemies objects and place them in array allEnemies **DONE
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
 };
 
 // Update the enemy's position, required method for game
@@ -49,9 +51,9 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-
-
     this.sprite = 'images/char-boy.png';
+    this.x = 200;
+    this.y = 400;
 };
 
 // Update the player's position, required method for game
@@ -75,7 +77,7 @@ Player.prototype.handleInput = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player();
-var allEnemies = [new Enemy(x1, y1), new Enemy(x2, y2), new Enemy(x3, y3)];
+var allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
 
 
 // This listens for key presses and sends the keys to your
