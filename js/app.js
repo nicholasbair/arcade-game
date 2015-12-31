@@ -40,6 +40,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    // this.x = dt * 7000;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -69,8 +70,24 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(userInput) {
+    switch (userInput) {
+        case 'left':
+            this.x -=50;
+            break;
 
+        case 'up':
+            this.y -=50;
+            break;
+
+        case 'right':
+            this.x += 50;
+            break;
+
+        case 'down':
+            this.y += 50;
+            break;
+    }
 };
 
 // Now instantiate your objects.
