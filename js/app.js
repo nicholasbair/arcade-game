@@ -1,7 +1,6 @@
 // TODO:
 // Change README to instructions for game play
 // enemy.update
-    // updates enemy location
     // handles collision with player
 // ------ Extra features -------
     // Randomize enemy locations
@@ -99,13 +98,25 @@ Player.prototype.handleInput = function(userInput) {
     }
 };
 
+var pickRandom = function(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+
 // Now instantiate your objects.
 var player = new Player(),
-    allEnemies,
-    instantiateEnemies = function() {
-    allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
+    allEnemies = [],
+    instantiateEnemies = function(n) {
+        var i,
+            x = -75, //start off canvas
+            y = [60, 140, 225];
+        for(i = 0; i < n; i++) {
+            var enemy = new Enemy(x, pickRandom(y));
+            allEnemies.push(enemy);
+        }
+    // allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
 };
-instantiateEnemies();
+
+instantiateEnemies(3);
 
 
 // This listens for key presses and sends the keys to your
