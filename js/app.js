@@ -36,7 +36,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.reset = function() {
-
+    instantiateEnemies();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -101,7 +101,11 @@ Player.prototype.handleInput = function(userInput) {
 
 // Now instantiate your objects.
 var player = new Player(),
+    allEnemies,
+    instantiateEnemies = function() {
     allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
+};
+instantiateEnemies();
 
 
 // This listens for key presses and sends the keys to your
