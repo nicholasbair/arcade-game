@@ -10,11 +10,6 @@
 
 // Enemies our player must avoid
 var Enemy = function(x, y) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
@@ -24,9 +19,6 @@ var Enemy = function(x, y) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     this.x += this.speed * dt;
 
     if (this.x > 505) {
@@ -35,7 +27,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.reset = function() {
-    instantiateEnemies();
+    instantiateEnemies(1);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -50,6 +42,13 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
     this.y = 400;
+    this.leftBoundary = -25;
+    this.rightBoundary = 450;
+    this.bottomBoundary = 425;
+    this.topBoundary = -50;
+    this.winBoundary = 0;
+    this.move = 50;
+
 };
 
 // Update the player's position, required method for game
@@ -58,6 +57,13 @@ Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    // this.move * dt;
+
+    if (this.y <= this.winBoundary) {
+        console.log('you win');
+        this.x = 200;
+        this.y = 400;
+    }
 };
 
 // Draw the player on the screen, required method for game
@@ -66,35 +72,14 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(userInput) {
-    var leftBoundary = -25,
-        rightBoundary = 450,
-        bottomBoundary = 425,
-        topBoundary = -50,
-        winBoundary = 0,
-        move = 50;
-
-    if (userInput === 'left' && this.x - move > leftBoundary) {
-
-        this.x -= move;
-
-    } else if (userInput === 'up' && this.y - move > topBoundary) {
-
-        this.y -= move;
-
-        if (this.y <= winBoundary) {
-            console.log('you win');
-            this.x = 200;
-            this.y = 400;
-        }
-
-    } else if (userInput === 'right' && this.x + move < rightBoundary) {
-
-        this.x += move;
-
-    } else if (userInput === 'down' && this.y + move < bottomBoundary) {
-
-        this.y += move;
-
+    if (userInput === 'left' && this.x - this.move > this.leftBoundary) {
+        this.x -= this.move;
+    } else if (userInput === 'up' && this.y - this.move > this.topBoundary) {
+        this.y -= this.move;
+    } else if (userInput === 'right' && this.x + this.move < this.rightBoundary) {
+        this.x += this.move;
+    } else if (userInput === 'down' && this.y + this.move < this.bottomBoundary) {
+        this.y += this.move;
     }
 };
 
@@ -109,14 +94,14 @@ var player = new Player(),
         var i,
             x = -75, //start off canvas
             y = [60, 140, 225];
+
         for(i = 0; i < n; i++) {
             var enemy = new Enemy(x, pickRandom(y));
             allEnemies.push(enemy);
         }
-    // allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
-};
+    };
 
-instantiateEnemies(3);
+// instantiateEnemies(3);
 
 
 // This listens for key presses and sends the keys to your
