@@ -62,23 +62,18 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(userInput) {
-    switch (userInput) {
-        case 'left':
-            this.x -=50;
-            break;
 
-        case 'up':
-            this.y -=50;
-            break;
-
-        case 'right':
-            this.x += 50;
-            break;
-
-        case 'down':
-            this.y += 50;
-            break;
+    if (userInput === 'left') {
+        this.x -=50;
+    } else if (userInput === 'up') {
+        this.y -=50;
+    } else if (userInput === 'right') {
+        this.x += 50;
+    } else if (userInput === 'down') {
+        this.y += 50;
     }
+
+
 };
 
 // Now instantiate your objects.
