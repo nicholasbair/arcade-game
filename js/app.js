@@ -1,17 +1,13 @@
 // TODO:
 // Change README to instructions for game play
-// Enemy function
-    // set enemy initial speed
 // enemy.update
     // updates enemy location
     // handles collision with player
-// handleInput
-    // player cannot move off the screen (check for this and handle)
-    // reset game when player reaches water
-        // move player back to original location
 // ------ Extra features -------
     // Randomize enemy locations
     // Allow user to select level (easy, hard, impossible)
+    // You win message
+    // Score counter
 
 // Enemies our player must avoid
 var Enemy = function(x, y) {
@@ -23,6 +19,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speed = 100;
 };
 
 // Update the enemy's position, required method for game
@@ -31,7 +28,15 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = dt * 800;
+    this.x += this.speed * dt;
+
+    if (this.x > 505) {
+        this.reset();
+    }
+};
+
+Enemy.prototype.reset = function() {
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -66,40 +71,37 @@ Player.prototype.handleInput = function(userInput) {
         rightBoundary = 450,
         bottomBoundary = 425,
         topBoundary = -50,
-        winBoundary = 0;
+        winBoundary = 0,
+        move = 50;
 
+    if (userInput === 'left' && this.x - move > leftBoundary) {
 
-    if (userInput === 'left' && this.x - 50 > leftBoundary) {
+        this.x -= move;
 
-        this.x -=50;
+    } else if (userInput === 'up' && this.y - move > topBoundary) {
 
-    } else if (userInput === 'up' && this.y - 50 > topBoundary) {
-
-        this.y -=50;
+        this.y -= move;
 
         if (this.y <= winBoundary) {
-            alert('You win!');
+            console.log('you win');
+            this.x = 200;
+            this.y = 400;
         }
 
-    } else if (userInput === 'right' && this.x + 50 < rightBoundary) {
+    } else if (userInput === 'right' && this.x + move < rightBoundary) {
 
-        this.x += 50;
+        this.x += move;
 
-    } else if (userInput === 'down' && this.y + 50 < bottomBoundary) {
+    } else if (userInput === 'down' && this.y + move < bottomBoundary) {
 
-        this.y += 50;
+        this.y += move;
 
     }
-
-    // y = 50 boundary for water
-
 };
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var player = new Player();
-var allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
+var player = new Player(),
+    allEnemies = [new Enemy(25, 60), new Enemy(100, 140), new Enemy(200, 225)];
 
 
 // This listens for key presses and sends the keys to your
