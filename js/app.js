@@ -1,26 +1,17 @@
 // TODO:
 // Change README to instructions for game play
 // Enemy function
-    // set enemy initial location **DONE
     // set enemy initial speed
 // enemy.update
     // updates enemy location
     // handles collision with player
-// Player function
-    // loading image **DONE
-    // set player initial location **DONE
-// player.update
-    // similar to enemy.update **DONE
-// player.render
-    // use code from enemy.render **DONE
 // handleInput
-    // left key should move player left etc.
     // player cannot move off the screen (check for this and handle)
     // reset game when player reaches water
         // move player back to original location
-// Instantiate
-    // create new Player object **DONE
-    // create several new Enemies objects and place them in array allEnemies **DONE
+// ------ Extra features -------
+    // Randomize enemy locations
+    // Allow user to select level (easy, hard, impossible)
 
 // Enemies our player must avoid
 var Enemy = function(x, y) {
@@ -40,7 +31,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    // this.x = dt * 7000;
+    this.x = dt * 800;
 };
 
 // Draw the enemy on the screen, required method for game
