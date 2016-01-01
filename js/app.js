@@ -62,17 +62,36 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(userInput) {
+    var leftBoundary = -25,
+        rightBoundary = 450,
+        bottomBoundary = 425,
+        topBoundary = -50,
+        winBoundary = 0;
 
-    if (userInput === 'left') {
+
+    if (userInput === 'left' && this.x - 50 > leftBoundary) {
+
         this.x -=50;
-    } else if (userInput === 'up') {
+
+    } else if (userInput === 'up' && this.y - 50 > topBoundary) {
+
         this.y -=50;
-    } else if (userInput === 'right') {
+
+        if (this.y <= winBoundary) {
+            alert('You win!');
+        }
+
+    } else if (userInput === 'right' && this.x + 50 < rightBoundary) {
+
         this.x += 50;
-    } else if (userInput === 'down') {
+
+    } else if (userInput === 'down' && this.y + 50 < bottomBoundary) {
+
         this.y += 50;
+
     }
 
+    // y = 50 boundary for water
 
 };
 
