@@ -82,6 +82,41 @@ Player.prototype.handleInput = function(userInput) {
     }
 };
 
+// Check collision
+var checkCollisions = function() {
+    // define white space to account for player size
+    console.log('test');
+    var i,
+        len = allEnemies.length,
+        width = 101,
+        height = 171;
+
+    for(i = 0; i < length; i++) {
+        if (player.y < 250 && player.y > 200 && allEnemies[i].y === 225) {
+            console.log('same row as enemy');
+            if (player.x < allEnemies[i].x + width && player.x + width > allEnemies[i].x) {
+                console.log('you lose');
+                player.x = 200;
+                player.y = 400;
+            }
+        }
+    }
+};
+
+// test if player is in row
+    // bottom row y 200 and y 250
+        // this.y < 200 && this.y > 250
+    // middle row y 150 and y 100
+        // this.y < 150 and this.y > 100
+        // this.y < 150 && this.y > 100 && allEnemies[i].y === 140
+    // top row y 100 and y 1
+        // this.y < 100 && this.y > 1
+        // this.y < 100 && this.y > 1 && allEnemies[i].y === 60
+
+//     y = [60, 140, 225];
+// (this.x < allEnemies[i].x + enemyWidth && this.x + playerWidth > allEnemies[i].x
+    // && this.y < allEnemies[i].y + enemyHeight && this.y + playerHeight > allEnemies[i].y)
+
 var pickRandom = function(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 };
