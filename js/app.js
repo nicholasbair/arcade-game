@@ -1,11 +1,3 @@
-// TODO:
-// Change README to instructions for game play
-
-// ------ Extra features -------
-    // Allow user to select level (easy, hard, impossible)
-    // You win message
-    // Score counter
-
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
