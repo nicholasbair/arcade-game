@@ -83,34 +83,27 @@ Player.prototype.handleInput = function(userInput) {
 
 // Check collision
 var checkCollisions = function() {
-    // define white space to account for player size
-    console.log('test');
+
     var i,
         len = allEnemies.length,
-        width = 50;
+        width = 50,
+        checkX =  function() {
+            if (player.x < allEnemies[i].x + width && player.x + width > allEnemies[i].x) {
+                console.log('you lose');
+                player.x = 200;
+                player.y = 400;
+            }
+        };
 
     for(i = 0; i < len; i++) {
         if (player.y <= 250 && player.y >= 200 && allEnemies[i].y === 225) {
-            console.log('same row as enemy');
-            if (player.x < allEnemies[i].x + width && player.x + width > allEnemies[i].x) {
-                console.log('you lose');
-                player.x = 200;
-                player.y = 400;
-            }
+            checkX();
+
         } else if (player.y <= 150 && player.y >= 100 && allEnemies[i].y === 140) {
-            console.log('same row as enemy');
-            if (player.x < allEnemies[i].x + width && player.x + width > allEnemies[i].x) {
-                console.log('you lose');
-                player.x = 200;
-                player.y = 400;
-            }
+            checkX();
+
         } else if (player.y <= 100 && player.y >= 1 && allEnemies[i].y === 60) {
-            console.log('same row as enemy');
-            if (player.x < allEnemies[i].x + width && player.x + width > allEnemies[i].x) {
-                console.log('you lose');
-                player.x = 200;
-                player.y = 400;
-            }
+            checkX();
         }
     }
 };
