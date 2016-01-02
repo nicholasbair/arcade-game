@@ -21,8 +21,12 @@ var Enemy = function(x, y) {
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
-    if (this.x > 505) {
-        instantiateEnemies();
+    if (this.x > 500) {
+        var x = [-25, -100, -175],
+            y = [60, 140, 225];
+
+        this.x = pickRandom(x);
+        this.y = pickRandom(y);
     }
 };
 
@@ -86,7 +90,7 @@ var player = new Player(),
     allEnemies = [],
     instantiateEnemies = function(n) {
         var i,
-            x = [-25, -100, -175], //start off canvas
+            x = [-25, -100, -175],
             y = [60, 140, 225];
 
         for(i = 0; i < n; i++) {
@@ -95,7 +99,7 @@ var player = new Player(),
         }
     };
 
-instantiateEnemies(3);
+instantiateEnemies(4);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
