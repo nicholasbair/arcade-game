@@ -1,6 +1,8 @@
-frontend-nanodegree-arcade-game
-===============================
+# Welcome to my frogger clone
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+_This game is part of the Udacity Front-end Developer Nanodegree._
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Playing the game:
+    1. You win if your player reaches the water
+    2. You lose if your player collides with a bug
+    3. Use left, right, up, down arrow keys to navigate
