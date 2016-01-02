@@ -3,7 +3,6 @@
 // enemy.update
     // handles collision with player
 // ------ Extra features -------
-    // Randomize enemy locations
     // Allow user to select level (easy, hard, impossible)
     // You win message
     // Score counter
@@ -42,11 +41,13 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
     this.y = 400;
-    this.leftBoundary = -25;
-    this.rightBoundary = 450;
-    this.bottomBoundary = 425;
-    this.topBoundary = -50;
-    this.winBoundary = 0;
+    this.boundary = {
+        left: -25,
+        right: 450,
+        bottom: 425,
+        top: -50,
+        win: 0
+    };
     this.move = 50;
 };
 
@@ -57,7 +58,7 @@ Player.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    if (this.y <= this.winBoundary) {
+    if (this.y <= this.boundary.win) {
         console.log('you win');
         this.x = 200;
         this.y = 400;
@@ -70,13 +71,13 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(userInput) {
-    if (userInput === 'left' && this.x - this.move > this.leftBoundary) {
+    if (userInput === 'left' && this.x - this.move > this.boundary.left) {
         this.x -= this.move;
-    } else if (userInput === 'up' && this.y - this.move > this.topBoundary) {
+    } else if (userInput === 'up' && this.y - this.move > this.boundary.top) {
         this.y -= this.move;
-    } else if (userInput === 'right' && this.x + this.move < this.rightBoundary) {
+    } else if (userInput === 'right' && this.x + this.move < this.boundary.right) {
         this.x += this.move;
-    } else if (userInput === 'down' && this.y + this.move < this.bottomBoundary) {
+    } else if (userInput === 'down' && this.y + this.move < this.boundary.bottom) {
         this.y += this.move;
     }
 };
