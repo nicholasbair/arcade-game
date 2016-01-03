@@ -2,6 +2,8 @@
 
 _This game is part of the Udacity Front-end Developer Nanodegree._
 
+Visual assets and game engine were provided by Udacity.
+
 ## Running the game:
     1. Clone repository
     2. Open index.html in browser
