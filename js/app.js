@@ -10,8 +10,9 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
+    var leftBoundary = 500;
 
-    if (this.x > 500) {
+    if (this.x > leftBoundary) {
         var x = [-25, -100, -175],
             y = [60, 140, 225];
 
